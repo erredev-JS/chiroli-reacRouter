@@ -3,6 +3,8 @@ import style from './EstudiantesScreen.module.css'
 import { useEffect, useState } from 'react';
 import { IStudent } from '../../../types/IStudents';
 import StudentCard from '../../StudentCard/StudentCard';
+import { ICourses } from '../../../types/ICourses';
+import { cursosServices } from '../../../http/cursosService';
 export const EstudiantesScreen = () => {
 
     const navigate = useNavigate()
@@ -13,25 +15,11 @@ export const EstudiantesScreen = () => {
 
     const {idCurso} = useParams<{idCurso: string}>()
 
-      const [cursos, setCursos] = useState<any[]>([]);
+      const [cursos, setCursos] = useState<ICourses[]>([]);
       const [loading, setLoading] = useState(true);
     
       useEffect(() => {
-
-        async function fetchData() {
-          try {
-            const response = await fetch("http://localhost:3000/cursos");
-            if (!response.ok) throw new Error("Error al obtener los cursos");
-            const data = await response.json();
-            setCursos(data);
-          } catch (error) {
-            console.log(error);
-          } finally {
-            setLoading(false);
-          }
-        }
-    
-        fetchData();
+        cursosServices.getCursos().then(data => setCursos(data)).catch(err => console.error(err)).finally(() => setLoading(false))
       }, []);
       
       const curso = cursos.find((curso) => curso.id == Number(idCurso))

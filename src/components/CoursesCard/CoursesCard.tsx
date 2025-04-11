@@ -10,15 +10,19 @@ type Props = {
 }
 
 const CoursesCard: FC<Props> = ({curso}) => {
-
+    let countAlumnos = curso.estudiantes.length
     const navigate = useNavigate();
     
     const handleClick = (id: number) => {
       navigate(`/estudiantes/${id}`);
     };
+    
   return (
     <div key={curso.id} className={style.card}>
     <p>{curso.nombre}</p>
+    <br />
+    <p>Cantidad de alumnos: {countAlumnos}</p>
+    <br />
     <button onClick={() => {
         if(curso.id) handleClick(curso.id)
     }} className={style.btnCustom}>Ver participantes</button>
