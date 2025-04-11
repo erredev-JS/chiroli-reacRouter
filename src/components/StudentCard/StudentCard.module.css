@@ -1,0 +1,43 @@
+.mainContainer{
+    display: flex;
+   
+    flex-direction: column;
+    gap: 10px;
+   
+
+}
+.screen{
+    text-align: center;
+}
+
+
+.container{
+    display: flex;
+   gap: 30px;
+   background-color: grey;
+
+}
+
+
+.card{
+    padding: 10px;
+    background-color: beige;
+    width: 80%;
+    border: 1px solid black;
+    display: flex;
+    justify-content: space-around;
+    margin: 0 auto;
+    border-radius: 12px;
+}
+
+.btnCustom{
+    background-color: #6366f1; /* color indigo */
+    color: white;
+    font-weight: 600;
+    padding: 0.6em 1.2em;
+    border: none;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
